@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d3c480617f2b0f745972d3ef292c9d9b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Roboto Thin
+  fontNames:
+  - Roboto Thin
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a53a3888a97a20a47a7aa33d8262e48d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

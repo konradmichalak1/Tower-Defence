@@ -1,3 +1,21 @@
 # Don't track content of these folders
-Tower Defence/obj/
-Tower Defence/Library/
+/Tower Defence/[Oo]bj/
+/Tower Defence/[Ll]ibrary/
+/Tower Defence/[Tt]emp/
+/Tower Defence/[Oo]bj/
+/Tower Defence/[Bb]uild/
+/Tower Defence/[Bb]uilds/
+/Tower Defence/[Ll]ogs/
+
+# Never ignore Asset meta data
+!/Tower Defence/[Aa]ssets/**/*.meta
+
+# Unity3D generated file on crash reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.unitypackage
+
+# Crashlytics generated file
+crashlytics-build.properties

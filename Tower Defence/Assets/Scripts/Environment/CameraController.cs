@@ -4,8 +4,6 @@
 /// </summary>
 public class CameraController : MonoBehaviour {
 
-    private bool doMovement = true;
-
     /// <summary>
     /// Camera speed
     /// </summary>
@@ -26,12 +24,6 @@ public class CameraController : MonoBehaviour {
             this.enabled = false;
             return;
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            doMovement = !doMovement;
-
-        if (!doMovement)
-            return;
 
         if(Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {

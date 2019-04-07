@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Environment\CameraController.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\BuildManager.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\GameMaster\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\WaveSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\NodeController.cs" />

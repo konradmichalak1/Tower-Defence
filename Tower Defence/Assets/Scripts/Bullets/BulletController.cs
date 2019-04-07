@@ -9,11 +9,12 @@ public class BulletController : MonoBehaviour {
     /// <summary> Bullet impact effect </summary>
     public GameObject impactEffect;
 
+
+    public int damage = 50;
+    public float speed = 70f;
+
     /// <summary> Bullet explosion range (Area of effect - AOE) </summary>
     public float explosionRadius = 0f;
-
-    public float speed = 70f;
-    public int damage = 50;
 
     public void ChaseEnemy(Transform _target)
     {

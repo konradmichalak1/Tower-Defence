@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 222575057516869408}
   - component: {fileID: 114408788004365398}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $100
+  m_Text: $300
 --- !u!222 &222040437330109134
 CanvasRenderer:
   m_ObjectHideFlags: 1

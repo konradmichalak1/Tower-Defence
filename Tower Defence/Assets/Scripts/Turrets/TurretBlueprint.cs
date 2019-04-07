@@ -8,8 +8,25 @@ using UnityEngine;
 [System.Serializable] //Serializable describes Unity how to show information about object
 public class TurretBlueprint {
 
-    //Turret object
+    /// <summary>
+    /// Turret prefab
+    /// </summary>
     public GameObject prefab;
-    //Turret cost
+    /// <summary>
+    /// Turret cost
+    /// </summary>
     public int cost;
+    /// <summary>
+    /// Upgraded turret prefab
+    /// </summary>
+    public GameObject upgradedPrefab;
+    /// <summary>
+    /// Turret upgrade cost
+    /// </summary>
+    public int upgradeCost;
+
+    public int GetSellAmount()
+    {
+        return cost/2;
+    }
 }

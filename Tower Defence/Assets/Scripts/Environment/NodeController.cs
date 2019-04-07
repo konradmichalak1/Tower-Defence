@@ -9,14 +9,24 @@ public class NodeController : MonoBehaviour {
     public Color notEnoughMoneyColor;
 
     /// <summary>
-    /// Offset of turret position during spawn
+    /// Offset of turret position during spawn.
     /// </summary>
     public Vector3 positionOffset;
     /// <summary>
-    /// Turret that is currently builded on this node
+    /// Turret that is currently builded on this node.
     /// </summary>
-    [Header("Optional")]
+    [HideInInspector]
     public GameObject turret;
+    /// <summary>
+    /// Selected turret blueprint.
+    /// </summary>
+    [HideInInspector]
+    public TurretBlueprint turretBlueprint;
+    /// <summary>
+    /// Is builded turret currently upgraded?
+    /// </summary>
+    [HideInInspector]
+    public bool isUpgraded = false;
 
     /// <summary>
     /// This object renderer (In unity this is component called "Mesh Renderer")
@@ -64,7 +74,72 @@ public class NodeController : MonoBehaviour {
         if (!buildManager.CanBuild)
             return;
 
-        buildManager.BuildTurretOn(this);
+        BuildTurret(buildManager.GetTurretToBuild());
+    }
+    /// <summary>
+    /// If player has enough money, intantiates indicated Turret into Node.
+    /// </summary>
+    /// <param name="blueprint">Which the turret will be built.</param>
+    void BuildTurret(TurretBlueprint blueprint)
+    {
+        if (PlayerStats.Money < blueprint.cost)
+        {
+            return;
+        }
+
+        PlayerStats.Money -= blueprint.cost;
+
+        //Build a turret that is selected in Shop
+        GameObject _turret = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        turret = _turret;
+
+        turretBlueprint = blueprint;
+
+        //Creates building effect and destroy it from Scene after 2s
+        GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 2f);
+    }
+
+    /// <summary>
+    /// If player has enough money, upgrade turret that is actually builded on this node.
+    /// </summary>
+    public void UpgradeTurret()
+    {
+        if (PlayerStats.Money < turretBlueprint.upgradeCost)
+        {
+            return;
+        }
+
+        PlayerStats.Money -= turretBlueprint.upgradeCost;
+
+        //Get rid of the old turret
+        Destroy(turret);
+
+        //Build a upgraded turret
+        GameObject _turret = Instantiate(turretBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+        turret = _turret;
+
+        //Creates building effect and destroy it from Scene after 2s
+        GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 2f);
+
+        isUpgraded = true;
+    }
+    /// <summary>
+    /// Selling buildt turret
+    /// </summary>
+    public void SellTurret()
+    {
+        PlayerStats.Money += turretBlueprint.GetSellAmount();
+
+        //Creates selling effect and destroy it from Scene after 2s
+        GameObject effect = Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 2f);
+
+        Destroy(turret);
+        turretBlueprint = null;
+        isUpgraded = false;
+
     }
 
     /// <summary>

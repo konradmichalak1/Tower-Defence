@@ -44,6 +44,11 @@ public class BuildManager : MonoBehaviour {
     public GameObject buildEffect;
 
     /// <summary>
+    /// Sell effect prefab
+    /// </summary>
+    public GameObject sellEffect;
+
+    /// <summary>
     /// Returns true if player has selected any turret to build.
     /// </summary>
     public bool CanBuild
@@ -64,27 +69,6 @@ public class BuildManager : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// If player has enough money, intantiates selected Turret into indicated Node.
-    /// </summary>
-    /// <param name="node">Node on which the turret will be built.</param>
-    public void BuildTurretOn(NodeController node)
-    {
-        if (PlayerStats.Money < turretToBuild.cost)
-        {
-            return;
-        }
-
-        PlayerStats.Money -= turretToBuild.cost;
-
-        //Build a turret that is selected in Shop
-        GameObject turret = Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.turret = turret;
-
-        //Creates building effect and destroy it from Scene after 2s
-        GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 2f);
-    }
 
     public void SelectNode(NodeController node)
     {
@@ -114,5 +98,10 @@ public class BuildManager : MonoBehaviour {
     {
         turretToBuild = turret;
         DeselectNode();
+    }
+
+    public TurretBlueprint GetTurretToBuild()
+    {
+        return turretToBuild;
     }
 }

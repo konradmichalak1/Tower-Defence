@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Environment\UI\MoneyUI.cs" />
     <Compile Include="Assets\Scripts\Environment\UI\NodeUI.cs" />
     <Compile Include="Assets\Scripts\Environment\Waypoints.cs" />
+    <Compile Include="Assets\Scripts\Scenes\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Turrets\TurretBlueprint.cs" />
     <Compile Include="Assets\Scripts\Turrets\TurretController.cs" />
     <Reference Include="UnityEditor.StandardEvents">

@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Environment\GameMaster\GameManager.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\Environment\GameMaster\Wave.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\WaveSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\NodeController.cs" />
     <Compile Include="Assets\Scripts\Environment\Shop.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Scripts\Environment\UI\NodeUI.cs" />
     <Compile Include="Assets\Scripts\Environment\Waypoints.cs" />
     <Compile Include="Assets\Scripts\Scenes\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Scenes\SceneFader.cs" />
     <Compile Include="Assets\Scripts\Turrets\TurretBlueprint.cs" />
     <Compile Include="Assets\Scripts\Turrets\TurretController.cs" />
     <Reference Include="UnityEditor.StandardEvents">

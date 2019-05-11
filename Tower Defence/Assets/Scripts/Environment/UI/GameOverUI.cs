@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class GameOverUI : MonoBehaviour {
 
     public Text roundsText;
+    public SceneFader sceneFader;
+    public string menuSceneName = "MainMenu";
     /// <summary>
     /// On enable, update roundText
     /// </summary>
@@ -15,12 +17,12 @@ public class GameOverUI : MonoBehaviour {
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Menu()
     {
-        Debug.Log("Go to menu");
+        sceneFader.FadeTo(menuSceneName);
     }
 
 

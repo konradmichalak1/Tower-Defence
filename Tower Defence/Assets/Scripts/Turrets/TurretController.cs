@@ -143,8 +143,13 @@ public class TurretController : MonoBehaviour {
     /// </summary>
     private void Laser()
     {
+        //Making sure that we are not lasering enemy that is not alive.
+        if (!targetEnemy.isAlive)
+            return;
+
         //Damaging
         targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+
         //Slowing
         targetEnemy.Slow(slowPercentage);
 

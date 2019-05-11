@@ -6,6 +6,7 @@ using UnityEngine.UI;
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
+    public bool isAlive;
     public float startSpeed = 10f;
     [HideInInspector]
     public float speed;
@@ -23,6 +24,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        isAlive = true;
         speed = startSpeed;
         health = startHealth;
     }
@@ -55,10 +57,13 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Die()
     {
+        isAlive = false;
         PlayerStats.Money += moneyGain;
 
         GameObject effect =  Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 2f);
+
+        WaveSpawner.EnemiesAlive--;
 
         Destroy(gameObject);
     }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
 
 /// <summary>
 /// Enemy.prefab script
@@ -9,14 +9,22 @@ public class EnemyController : MonoBehaviour
     public float startSpeed = 10f;
     [HideInInspector]
     public float speed;
-    public float health = 100;
+
+    
+    public float startHealth = 100;
+    private float health;
     public int moneyGain = 50;
 
+
     public GameObject deathEffect;
+
+    [Header("Unity Stuff")]
+    public Image healthBar;
 
     private void Start()
     {
         speed = startSpeed;
+        health = startHealth;
     }
 
     /// <summary> Deal specified amount of damage  </summary>
@@ -24,7 +32,10 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if(health<= 0)
+
+        healthBar.fillAmount = health / startHealth; //Set UI healthbar of enemy to proper value.
+
+        if (health<= 0)
         {
             Die();
         }

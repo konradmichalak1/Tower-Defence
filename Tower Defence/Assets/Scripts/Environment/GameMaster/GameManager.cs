@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class resposible for game ending. 
+/// </summary>
 public class GameManager : MonoBehaviour {
 
     public static bool GameIsOver;
 
     public GameObject gameOverUI;
+
+    public GameObject completeLevelUI;
 
     private void Start()
     {
@@ -20,8 +25,11 @@ public class GameManager : MonoBehaviour {
         {
             EndGame();
         }
-
-		if(PlayerStats.Lives <= 0)
+        if (Input.GetKeyDown("r"))
+        {
+            WinLevel();
+        }
+        if (PlayerStats.Lives <= 0)
         {
             EndGame();
         }
@@ -31,5 +39,11 @@ public class GameManager : MonoBehaviour {
     {
         GameIsOver = true;
         gameOverUI.SetActive(true);
+    }
+
+    public void WinLevel()
+    {
+        GameIsOver = true;
+        completeLevelUI.SetActive(true);
     }
 }

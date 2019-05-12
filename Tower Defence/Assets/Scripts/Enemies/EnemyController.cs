@@ -6,6 +6,9 @@ using UnityEngine.UI;
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
+    /// <summary>
+    /// Is enemy alive?
+    /// </summary>
     public bool isAlive;
     public float startSpeed = 10f;
     [HideInInspector]
@@ -37,7 +40,7 @@ public class EnemyController : MonoBehaviour
 
         healthBar.fillAmount = health / startHealth; //Set UI healthbar of enemy to proper value.
 
-        if (health<= 0)
+        if (health<= 0 && isAlive)
         {
             Die();
         }

@@ -74,10 +74,13 @@
     <Compile Include="Assets\Scripts\Environment\NodeController.cs" />
     <Compile Include="Assets\Scripts\Environment\Shop.cs" />
     <Compile Include="Assets\Scripts\Environment\UI\GameOverUI.cs" />
+    <Compile Include="Assets\Scripts\Environment\UI\LevelCompleteUI.cs" />
     <Compile Include="Assets\Scripts\Environment\UI\LivesUI.cs" />
     <Compile Include="Assets\Scripts\Environment\UI\MoneyUI.cs" />
     <Compile Include="Assets\Scripts\Environment\UI\NodeUI.cs" />
+    <Compile Include="Assets\Scripts\Environment\UI\RoundSurvivedUI.cs" />
     <Compile Include="Assets\Scripts\Environment\Waypoints.cs" />
+    <Compile Include="Assets\Scripts\Scenes\LevelSelector.cs" />
     <Compile Include="Assets\Scripts\Scenes\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Scenes\SceneFader.cs" />
     <Compile Include="Assets\Scripts\Turrets\TurretBlueprint.cs" />

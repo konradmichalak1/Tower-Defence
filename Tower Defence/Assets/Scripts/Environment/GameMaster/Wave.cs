@@ -9,7 +9,7 @@ public class Wave {
     /// </summary>
     public GameObject enemy;
     /// <summary>
-    /// Amount of enemies.
+    /// Amount of enemies that will spawn in that wave.
     /// </summary>
     public int count;
     /// <summary>

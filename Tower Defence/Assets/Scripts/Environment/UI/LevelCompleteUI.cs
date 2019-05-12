@@ -26,4 +26,6 @@ public class LevelCompleteUI : MonoBehaviour {
         PlayerPrefs.SetInt("levelReached", levelToUnlock);
         sceneFader.FadeTo(nextLevel);
     }
+
+
 }

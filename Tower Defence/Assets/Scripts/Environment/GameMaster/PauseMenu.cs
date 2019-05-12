@@ -8,7 +8,13 @@ public class PauseMenu : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        //If game is over, player can't pause.
+        if (GameManager.GameIsOver)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Toggle();
         }

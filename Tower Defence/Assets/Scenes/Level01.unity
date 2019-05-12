@@ -3080,7 +3080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMoney: 5000
-  startLives: 10
+  startLives: 1
 --- !u!114 &653268674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5244,8 +5244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneFader: {fileID: 609968036}
   menuSceneName: MainMenu
-  nextLevel: Level01
-  levelToUnlock: 2
+  nextLevel: Level02
+  levelToUnlock: 3
 --- !u!4 &1305493030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4069976468441030, guid: 8e46099e1db181f4892754c15406bd91,

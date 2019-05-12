@@ -18,14 +18,24 @@ public class LevelCompleteUI : MonoBehaviour {
 
     public void Menu()
     {
-        sceneFader.FadeTo(menuSceneName);
+        MoveToScene(menuSceneName);
     }
 
     public void Continue()
     {
-        PlayerPrefs.SetInt("levelReached", levelToUnlock);
-        sceneFader.FadeTo(nextLevel);
+        MoveToScene(nextLevel);
     }
 
+    private void MoveToScene(string sceneName)
+    {
+        if (PlayerPrefs.GetInt("levelReached", 1) > levelToUnlock)
+        {
+            sceneFader.FadeTo(sceneName);
+            return;
+        }
+
+        PlayerPrefs.SetInt("levelReached", levelToUnlock);
+        sceneFader.FadeTo(sceneName);
+    }
 
 }

@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Environment\CameraController.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\BuildManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\GameMaster\EnemyInWave.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\GameManager.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\PlayerStats.cs" />

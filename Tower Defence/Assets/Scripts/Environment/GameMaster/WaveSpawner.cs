@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 /// <summary>
 /// GameMaster script
 /// </summary>
@@ -10,10 +11,14 @@ public class WaveSpawner : MonoBehaviour {
 
     public Wave[] waves;
 
+
     public Transform spawnPoint;
     
     public float timeBetweenWaves = 3f;
-    private float countdown = 2f;
+    /// <summary>
+    /// Time that is needed to start first wave.
+    /// </summary>
+    public float countdown = 2f;
 
     public Text waveCountdownText;
 
@@ -24,6 +29,7 @@ public class WaveSpawner : MonoBehaviour {
 
     private void Update()
     {
+
         //Spawn new wave only if there is no enemies.
         if(EnemiesAlive > 0)
         {
@@ -52,17 +58,32 @@ public class WaveSpawner : MonoBehaviour {
 
     IEnumerator SpawnWave()
     {
+        EnemiesAlive = 0;
         PlayerStats.Rounds++;
 
         Wave wave = waves[waveIndex];
 
-        EnemiesAlive = wave.count;
-
-        for (int i =0; i< wave.count; i++)
+        foreach(var e in wave.Enemies)
         {
-            SpawnEnemy(wave.enemy);
-            yield return new WaitForSeconds(1f / wave.rate);
+            EnemiesAlive += e.count;
         }
+
+        //EnemiesAlive = wave.count;
+
+        foreach (var e in wave.Enemies)
+        {
+            for (int i = 0; i < e.count; i++)
+            {
+                SpawnEnemy(e.enemy);
+                yield return new WaitForSeconds(1f / e.rate);
+            }
+        }
+
+        //for (int i =0; i< wave.count; i++)
+        //{
+        //  SpawnEnemy(wave.enemy);
+        //yield return new WaitForSeconds(1f / wave.rate);
+        //}
 
         waveIndex++;
 

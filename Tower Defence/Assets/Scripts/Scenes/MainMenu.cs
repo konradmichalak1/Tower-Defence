@@ -1,21 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    public string levelToLoad = "MainLevel";
+    public string levelSelectName = "LevelSelect";
+    public string shopLevelName = "Shop";
     public SceneFader sceneFader;
 
     public void Play()
     {
-        sceneFader.FadeTo(levelToLoad);
+        sceneFader.FadeTo(levelSelectName);
     }
 
     public void Quit()
     {
         Debug.Log("Quit");
         Application.Quit();
+    }
+
+    public void Shop()
+    {
+        sceneFader.FadeTo(shopLevelName);
     }
 }

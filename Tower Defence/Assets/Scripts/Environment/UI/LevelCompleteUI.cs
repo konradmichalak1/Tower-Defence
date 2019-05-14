@@ -15,6 +15,10 @@ public class LevelCompleteUI : MonoBehaviour {
     /// Next level number. If there is only first level unlocked, this should be 2.
     /// </summary>
     public int levelToUnlock;
+    /// <summary>
+    /// Money reward for that level.
+    /// </summary>
+    public int levelMoneyReward;
 
     public void Menu()
     {
@@ -28,6 +32,10 @@ public class LevelCompleteUI : MonoBehaviour {
 
     private void MoveToScene(string sceneName)
     {
+        //Add money to player global amount
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) + levelMoneyReward);
+
+        //Set max level reached number
         if (PlayerPrefs.GetInt("levelReached", 1) > levelToUnlock)
         {
             sceneFader.FadeTo(sceneName);

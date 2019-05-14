@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 //Game over class
 public class GameOverUI : MonoBehaviour {
 
     public SceneFader sceneFader;
     public string menuSceneName = "MainMenu";
+    public Text wavesSurvivedCounter;
 
     private void Update()
     {
@@ -13,6 +14,11 @@ public class GameOverUI : MonoBehaviour {
         {
             Time.timeScale = 0f;
         }
+    }
+
+    private void OnEnable()
+    {
+        wavesSurvivedCounter.text = PlayerStats.Rounds.ToString();
     }
 
     public void Retry()

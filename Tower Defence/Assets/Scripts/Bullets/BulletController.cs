@@ -4,6 +4,7 @@
 /// </summary>
 public class BulletController : MonoBehaviour {
 
+    public string bulletName;
     /// <summary> Enemy object </summary>
     private Transform target;
     /// <summary> Bullet impact effect </summary>
@@ -15,6 +16,15 @@ public class BulletController : MonoBehaviour {
 
     /// <summary> Bullet explosion range (Area of effect - AOE) </summary>
     public float explosionRadius = 0f;
+
+
+    private void Start()
+    {
+        //Set bullet stats from global stats
+        //damage = BulletsStats.GetBulletDamage(bulletName);
+        //speed = BulletsStats.GetBulletSpeed(bulletName);
+        //explosionRadius = BulletsStats.GetBulletRadius(bulletName);
+    }
 
     public void ChaseEnemy(Transform _target)
     {

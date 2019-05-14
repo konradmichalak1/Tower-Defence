@@ -258,11 +258,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd39f43c26238b04eb5a5ce09a12d80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretName: StandardTurret
   range: 15
   turnSpeed: 10
-  fireRate: 1
-  enemyTag: Enemy
-  partToRotate: {fileID: 4806196688058958}
   bulletPrefab: {fileID: 1416435163957430, guid: 7c9f883a36f2aff459a504f5d7d4724d,
     type: 2}
+  fireRate: 1
+  useLaser: 0
+  damageOverTime: 30
+  slowPercentage: 0.5
+  lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactLight: {fileID: 0}
+  enemyTag: Enemy
+  partToRotate: {fileID: 4806196688058958}
   firePoint: {fileID: 4421701519663798}

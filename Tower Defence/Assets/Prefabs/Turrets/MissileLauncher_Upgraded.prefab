@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd39f43c26238b04eb5a5ce09a12d80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretName: MissileLauncherUpgraded
   range: 35
   turnSpeed: 15
   bulletPrefab: {fileID: 1131392219841418, guid: f40e39edee8cb234fba6e0925e74798b,

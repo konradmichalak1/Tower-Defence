@@ -124,8 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f95cbe484d3a19640afb06b3be6d9b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletName: Missile
   impactEffect: {fileID: 1026973774874642, guid: ada0f402a681cdf409adf46ed3b1d04d,
     type: 2}
-  damage: 40
+  damage: 35
   speed: 30
-  explosionRadius: 8
+  explosionRadius: 5

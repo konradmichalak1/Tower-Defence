@@ -21,11 +21,16 @@ public class WaveSpawner : MonoBehaviour {
     public float countdown = 2f;
 
     public Text waveCountdownText;
+    public Text waveNumberText;
 
     public GameManager gameManager;
 
     private int waveIndex = 0;
 
+    private void Start()
+    {
+        waveNumberText.text = "0/" + waves.Length;
+    }
 
     private void Update()
     {
@@ -39,6 +44,7 @@ public class WaveSpawner : MonoBehaviour {
         //Winning level
         if (waveIndex == waves.Length && EnemiesAlive <=0)
         {
+            PlayerStats.Rounds = waveIndex;
             gameManager.WinLevel();
             this.enabled = false; //disable this script
         }
@@ -50,6 +56,8 @@ public class WaveSpawner : MonoBehaviour {
             countdown = timeBetweenWaves;
             return;
         }
+
+
         countdown -= Time.deltaTime;
         countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity); //Counter always will always have positive value
 
@@ -58,8 +66,10 @@ public class WaveSpawner : MonoBehaviour {
 
     IEnumerator SpawnWave()
     {
+        PlayerStats.Rounds = waveIndex;
+        waveNumberText.text = (waveIndex+1) + "/" + waves.Length;
+
         EnemiesAlive = 0;
-        PlayerStats.Rounds++;
 
         Wave wave = waves[waveIndex];
 
@@ -68,7 +78,6 @@ public class WaveSpawner : MonoBehaviour {
             EnemiesAlive += e.count;
         }
 
-        //EnemiesAlive = wave.count;
 
         foreach (var e in wave.Enemies)
         {
@@ -79,14 +88,7 @@ public class WaveSpawner : MonoBehaviour {
             }
         }
 
-        //for (int i =0; i< wave.count; i++)
-        //{
-        //  SpawnEnemy(wave.enemy);
-        //yield return new WaitForSeconds(1f / wave.rate);
-        //}
-
         waveIndex++;
-
     }
 
     /// <summary>

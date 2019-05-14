@@ -73,6 +73,8 @@
     <Compile Include="Assets\Scripts\Environment\GameMaster\Wave.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\WaveSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\NodeController.cs" />
+    <Compile Include="Assets\Scripts\Environment\Player\BulletsStats.cs" />
+    <Compile Include="Assets\Scripts\Environment\Player\TurretsStats.cs" />
     <Compile Include="Assets\Scripts\Environment\Shop.cs" />
     <Compile Include="Assets\Scripts\Environment\UI\GameOverUI.cs" />
     <Compile Include="Assets\Scripts\Environment\UI\LevelCompleteUI.cs" />

@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class TurretController : MonoBehaviour {
 
+    
+
     /// <summary> Closest enemy position. </summary>
     private Transform target;
     /// <summary> Closest enemy object </summary>
@@ -14,6 +16,8 @@ public class TurretController : MonoBehaviour {
 
     /// <summary> Shooting range. </summary>
     [Header("General")]
+    public string turretName;
+
     public float range = 15f;
 
     /// <summary>Turret rotate speed. </summary>
@@ -47,7 +51,14 @@ public class TurretController : MonoBehaviour {
 
 	void Start () {
         InvokeRepeating("UpdateTarget", 0f, 0.5f); //Starts UpdateTarget() fuction every specified time
-	}
+
+        //Set turret stats from global stats
+        range = TurretsStats.GetTurretRange(turretName);
+        fireRate = TurretsStats.GetTurretFireRate(turretName);
+        damageOverTime = TurretsStats.GetTurretDamageOverTime(turretName);
+        slowPercentage = TurretsStats.GetTurretSlowPercentage(turretName);
+
+    }
 
     /// <summary>
     /// Searches for the closest enemy and focus turret on it

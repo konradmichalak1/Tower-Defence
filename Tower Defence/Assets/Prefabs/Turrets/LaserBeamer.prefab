@@ -231,8 +231,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1974358468192950}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50, y: 3.06, z: 5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4016375813014268}
@@ -388,13 +388,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd39f43c26238b04eb5a5ce09a12d80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretName: LaserBeamer
   range: 20
   turnSpeed: 20
   bulletPrefab: {fileID: 0}
   fireRate: 1
   useLaser: 1
   damageOverTime: 30
-  slowPercentage: 0.5
+  slowPercentage: 0.4
   lineRenderer: {fileID: 120595213320091418}
   impactEffect: {fileID: 198490373411046676}
   impactLight: {fileID: 108007106019491648}

@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Scenes\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Scenes\SceneFader.cs" />
     <Compile Include="Assets\Scripts\Scenes\ShopController.cs" />
+    <Compile Include="Assets\Scripts\Scenes\ShopTextController.cs" />
     <Compile Include="Assets\Scripts\Turrets\TurretBlueprint.cs" />
     <Compile Include="Assets\Scripts\Turrets\TurretController.cs" />
     <Reference Include="UnityEditor.StandardEvents">

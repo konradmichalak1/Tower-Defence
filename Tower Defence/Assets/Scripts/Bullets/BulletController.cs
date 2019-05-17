@@ -21,9 +21,9 @@ public class BulletController : MonoBehaviour {
     private void Start()
     {
         //Set bullet stats from global stats
-        //damage = BulletsStats.GetBulletDamage(bulletName);
-        //speed = BulletsStats.GetBulletSpeed(bulletName);
-        //explosionRadius = BulletsStats.GetBulletRadius(bulletName);
+        damage = BulletsStats.GetBulletDamage(bulletName);
+        speed = BulletsStats.GetBulletSpeed(bulletName);
+        explosionRadius = BulletsStats.GetBulletExplosionRadius(bulletName);
     }
 
     public void ChaseEnemy(Transform _target)

@@ -13,9 +13,16 @@ public class ShopTextController : MonoBehaviour
     public Text[] texts;
     static public Text[] Texts;
 
+
+
     public static string itemName;
     private static string upgradeLevel;
 
+
+    /// <summary> Value that turret Range Stat will be improved when upgraded.</summary>
+    public static float RangeUpgradeTick = 0.25f;
+    /// <summary> Value that turret FireRate Stat will be improved when upgraded.</summary>
+    public static float FireRateUpgradeTick = 0.05f;
 
     //Value is actuall value of that stat
     const string RangeValueText = "RangeValueText";
@@ -23,6 +30,8 @@ public class ShopTextController : MonoBehaviour
     const string RangeUpgradeCostText = "RangeUpgradeCostText";
     //Progress is the value that will be achieved, when player upgrade it.
     const string RangeProgressValueText = "RangeProgressValueText";
+    //Current Range upgrade level
+    const string RangeLvlText = "RangeLvlText";
 
     //Value is actuall value of that stat
     const string FireRateValueText = "FireRateValueText";
@@ -30,6 +39,8 @@ public class ShopTextController : MonoBehaviour
     const string FireRateUpgradeCostText = "FireRateUpgradeCostText";
     //Progress is the value that will be achieved, when player upgrade it.
     const string FireRateProgressValueText = "FireRateProgressValueText";
+    //Current FireRate upgrade level
+    const string FireRateLvlText = "FireRateLvlText";
 
 
     private void Start()
@@ -44,6 +55,7 @@ public class ShopTextController : MonoBehaviour
         {
             switch (text.name)
             {
+                #region RANGE
                 case RangeValueText:
                     {
                         float value = PlayerPrefs.GetFloat(fullItemName + "Range");
@@ -54,18 +66,29 @@ public class ShopTextController : MonoBehaviour
 
                 case RangeUpgradeCostText:
                     {
-                        int value = 50;
-                        text.text = "-" + value + "$";
+                        int value = 10;
+                        int level = PlayerPrefs.GetInt(fullItemName + "RangeLvl", 1);
+
+                        text.text = "-" + value*level + "$";
                         break;
                     }
 
                 case RangeProgressValueText:
                     {
                         float value = PlayerPrefs.GetFloat(fullItemName + "Range");
-                        text.text = value + " -> " + "<b> " + (value+0.25f) + "</b>";
+                        text.text = value + " -> " + "<b> " + (value + RangeUpgradeTick) + "</b>";
+                        break;
+                    }
+                case RangeLvlText:
+                    {
+                        int level = PlayerPrefs.GetInt(fullItemName + "RangeLvl", 1);
+                        text.text = "LVL " + level;
                         break;
                     }
 
+                #endregion
+
+                #region FIRERATE
                 case FireRateValueText:
                     {
                         float value = PlayerPrefs.GetFloat(fullItemName + "FireRate");
@@ -75,17 +98,26 @@ public class ShopTextController : MonoBehaviour
 
                 case FireRateUpgradeCostText:
                     {
-                        int value = 60;
-                        text.text = "-" + value + "$";
+                        int value = 10;
+                        int level = PlayerPrefs.GetInt(fullItemName + "FireRateLvl", 1);
+                        text.text = "-" + value * level + "$";
                         break;
                     }
 
                 case FireRateProgressValueText:
                     {
                         float value = PlayerPrefs.GetFloat(fullItemName + "FireRate");
-                        text.text = value + " -> " + "<b> " + (value + 0.05f) + "</b>";
+                        text.text = value + " -> " + "<b> " + (value + FireRateUpgradeTick) + "</b>";
                         break;
                     }
+
+                case FireRateLvlText:
+                    {
+                        int level = PlayerPrefs.GetInt(fullItemName + "FireRateLvl", 1);
+                        text.text = "LVL " + level;
+                        break;
+                    }
+                    #endregion
             }
         }
     }
@@ -107,5 +139,10 @@ public class ShopTextController : MonoBehaviour
         {
             upgradeLevel = "Upgraded";
         }
+    }
+
+    public static string GetUpgradeLevel()
+    {
+        return upgradeLevel;
     }
 }

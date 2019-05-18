@@ -20,8 +20,6 @@ public class ShopController : MonoBehaviour {
     public int selectedUpgradeLevel;
 
 
-
-
     /// <summary> When shop item is clicked, sets reference of selectedItem and make it active. </summary>
     /// <param name="item"></param>
     public void SelectItem(GameObject shopItem)
@@ -31,7 +29,6 @@ public class ShopController : MonoBehaviour {
         StartCoroutine(UpdateUITexts());
     }
 
-
     /// <summary> When item upgrade level is clicked, sets current upgrade level and changes values </summary>
     /// <param name="itemLevel">Clicked game object - item level</param>
     public void SelectItemUpgradeLevel(GameObject itemLevel)
@@ -39,6 +36,49 @@ public class ShopController : MonoBehaviour {
         //Current child index in hierarchy of 'UpgradeLevelButtons'
         selectedUpgradeLevel = itemLevel.transform.GetSiblingIndex() + 1;
         StartCoroutine(UpdateUITexts());
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public void BuyUpgrade(string upgradeStatName)
+    {
+        string fullItemName = ShopTextController.itemName + ShopTextController.GetUpgradeLevel();
+
+        int basicValue = 10;
+        int level = PlayerPrefs.GetInt(fullItemName + upgradeStatName + "Lvl", 1);
+        Debug.Log(fullItemName + upgradeStatName);
+
+        int cost = basicValue * level;
+        int playerMoneys = PlayerPrefs.GetInt("Money", 0);
+
+        if (playerMoneys < cost)
+        {
+            Debug.Log("Not enought money");
+            return;
+        }
+
+        switch(upgradeStatName)
+        {
+            case "Range":
+                {
+
+                    PlayerPrefs.SetFloat(fullItemName + upgradeStatName, PlayerPrefs.GetFloat(fullItemName + upgradeStatName) + ShopTextController.RangeUpgradeTick);
+                    break;
+                }
+            case "FireRate":
+                {
+
+                    PlayerPrefs.SetFloat(fullItemName + upgradeStatName, PlayerPrefs.GetFloat(fullItemName + upgradeStatName) + ShopTextController.FireRateUpgradeTick);
+                    break;
+                }
+        }
+
+        PlayerPrefs.SetInt(fullItemName + upgradeStatName + "Lvl", level + 1);
+        PlayerPrefs.SetInt("Money", playerMoneys - cost);
+
+        UpdateMoneyText();
+        ShopTextController.UpdateTexts();
     }
 
     /// <summary>
@@ -64,6 +104,13 @@ public class ShopController : MonoBehaviour {
     public void ResetUserSave()
     {
         PlayerPrefs.DeleteAll();
+        Back();
+    }
+
+    /// <summary> FOR TESTS ONLY: ADD MONEY </summary>
+    public void AddMoney(int amount)
+    {
+        PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) + amount);
         UpdateMoneyText();
     }
 

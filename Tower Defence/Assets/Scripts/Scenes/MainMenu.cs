@@ -23,4 +23,10 @@ public class MainMenu : MonoBehaviour {
     {
         sceneFader.FadeTo(shopLevelName);
     }
+
+    private void Start()
+    {
+        TurretsStats.SetAllTurretStats();
+
+    }
 }

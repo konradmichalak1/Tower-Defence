@@ -240,10 +240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e33a89aadd932347a65923d227cfb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 0
   startSpeed: 20
   speed: 10
-  startHealth: 15
-  moneyGain: 25
+  startHealth: 20
+  moneyGain: 10
   deathEffect: {fileID: 1569451010829848, guid: b414acb0f1ed1a94fb7530011e86bebd,
     type: 2}
   healthBar: {fileID: 114909981388069068}

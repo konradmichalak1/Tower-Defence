@@ -27,6 +27,7 @@ public class MainMenu : MonoBehaviour {
     private void Start()
     {
         TurretsStats.SetAllTurretStats();
+        BulletsStats.SetAllBulletStats();
 
     }
 }

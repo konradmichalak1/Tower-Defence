@@ -12,6 +12,9 @@ public class TurretsStats : MonoBehaviour
     const string FireRate = "FireRate";
     const string DamageOverTime = "DamageOverTime";
     const string SlowPercentage = "SlowPercentage";
+    const string Damage = "Damage";
+    const string Speed = "Speed";
+    const string ExplosionRadius = "ExplosionRadius";
 
     /// <summary>
     /// Stores all turrets names
@@ -142,6 +145,7 @@ public class TurretsStats : MonoBehaviour
         return 0f;
     }
 
+
     #endregion
 
     #region Set
@@ -270,6 +274,86 @@ public class TurretsStats : MonoBehaviour
             case "LaserBeamerUpgraded":
                 {
                     PlayerPrefs.SetFloat(fullName, 0.55f);
+                    break;
+                }
+        }
+    }
+
+    static public void SetDefaultBulletDamage(string BulletName)
+    {
+        //Example: LaserBeamerSlowPercentage
+        string fullName = BulletName + Damage;
+
+        switch (BulletName)
+        {
+            case "StandardBullet":
+                {
+                    PlayerPrefs.SetInt(fullName, 50);
+                    break;
+                }
+            case "StandardBulletUpgraded":
+                {
+                    PlayerPrefs.SetInt(fullName, 60);
+                    break;
+                }
+            case "Missile":
+                {
+                    PlayerPrefs.SetInt(fullName, 35);
+                    break;
+                }
+            case "MissileUpgraded":
+                {
+                    PlayerPrefs.SetInt(fullName, 40);
+                    break;
+                }
+        }
+    }
+
+    static public void SetDefaultBulletSpeed(string BulletName)
+    {
+        //Example: LaserBeamerSlowPercentage
+        string fullName = BulletName + Speed;
+
+        switch (BulletName)
+        {
+            case "StandardBullet":
+                {
+                    PlayerPrefs.SetFloat(fullName, 60);
+                    break;
+                }
+            case "StandardBulletUpgraded":
+                {
+                    PlayerPrefs.SetFloat(fullName, 65);
+                    break;
+                }
+            case "Missile":
+                {
+                    PlayerPrefs.SetFloat(fullName, 30);
+                    break;
+                }
+            case "MissileUpgraded":
+                {
+                    PlayerPrefs.SetFloat(fullName, 40);
+                    break;
+                }
+        }
+    }
+
+    static public void SetDefaultBulleExplosionRadius(string BulletName)
+    {
+        //Example: LaserBeamerSlowPercentage
+        string fullName = BulletName + ExplosionRadius;
+
+        switch (BulletName)
+        {
+            case "Missile":
+                {
+                    PlayerPrefs.SetFloat(fullName, 5);
+                    break;
+                }
+            case "MissileUpgraded":
+                {
+                    PlayerPrefs.SetFloat(fullName, 8);
                     break;
                 }
         }

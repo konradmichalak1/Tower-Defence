@@ -67,6 +67,7 @@ public class EnemyController : MonoBehaviour
         Destroy(effect, 2f);
 
         WaveSpawner.EnemiesAlive--;
+        WaveSpawnerInfinity.EnemiesAlive--;
 
         Destroy(gameObject);
     }

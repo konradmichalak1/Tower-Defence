@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Environment\GameMaster\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\Wave.cs" />
     <Compile Include="Assets\Scripts\Environment\GameMaster\WaveSpawner.cs" />
+    <Compile Include="Assets\Scripts\Environment\GameMaster\WaveSpawnerInfinity.cs" />
     <Compile Include="Assets\Scripts\Environment\NodeController.cs" />
     <Compile Include="Assets\Scripts\Environment\Player\BulletsStats.cs" />
     <Compile Include="Assets\Scripts\Environment\Player\TurretsStats.cs" />

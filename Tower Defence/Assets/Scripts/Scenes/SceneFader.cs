@@ -46,6 +46,7 @@ public class SceneFader : MonoBehaviour {
             yield return 0;
         }
 
+        WaveSpawnerInfinity.EnemiesAlive = 0;
         WaveSpawner.EnemiesAlive = 0;
         SceneManager.LoadScene(scene);
     }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LevelCompleteUI : MonoBehaviour {
 
     public SceneFader sceneFader;
@@ -30,13 +30,23 @@ public class LevelCompleteUI : MonoBehaviour {
         MoveToScene(nextLevel);
     }
 
-    private void MoveToScene(string sceneName)
+    private void OnEnable()
     {
+        if (SceneManager.GetActiveScene().name == "InfinityLevel")
+        {
+            levelMoneyReward = WaveSpawnerInfinity.MoneyReward;
+        }
+
         //Add money to player global amount
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) + levelMoneyReward);
+    }
+
+    private void MoveToScene(string sceneName)
+    {
+
 
         //Set max level reached number
-        if (PlayerPrefs.GetInt("levelReached", 1) > levelToUnlock)
+        if (PlayerPrefs.GetInt("levelReached", 2) > levelToUnlock)
         {
             sceneFader.FadeTo(sceneName);
             return;

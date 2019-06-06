@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Shop.unity
     guid: 736505117033140428e332ace664f775
   - enabled: 1
+    path: Assets/Scenes/InfinityLevel.unity
+    guid: 822d3bb4ff904704db1cecd56a723f67
+  - enabled: 1
     path: Assets/Scenes/MainLevel.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1

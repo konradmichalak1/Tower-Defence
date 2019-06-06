@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Class resposible for game ending. 
@@ -21,16 +22,14 @@ public class GameManager : MonoBehaviour {
     void Update () {
         if (GameIsOver) return;
 
-        if(Input.GetKeyDown("e"))
-        {
-            EndGame();
-        }
-        if (Input.GetKeyDown("r"))
-        {
-            WinLevel();
-        }
+
         if (PlayerStats.Lives <= 0)
         {
+            if(SceneManager.GetActiveScene().name == "InfinityLevel")
+            {
+                WinLevel();
+                return;
+            }
             EndGame();
         }
 	}

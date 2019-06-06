@@ -5411,7 +5411,7 @@ MonoBehaviour:
   sceneFader: {fileID: 609968036}
   menuSceneName: MainMenu
   nextLevel: Level02
-  levelToUnlock: 3
+  levelToUnlock: 4
   levelMoneyReward: 150
 --- !u!4 &1305493030 stripped
 Transform:

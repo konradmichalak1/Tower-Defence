@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundSurvivedUI : MonoBehaviour {
 
@@ -37,8 +38,12 @@ public class RoundSurvivedUI : MonoBehaviour {
     {
         moneyText.text = "0";
         int money = 0;
+        yield return new WaitForSeconds(.003f);
 
-        yield return new WaitForSeconds(.7f);
+        if (SceneManager.GetActiveScene().name == "InfinityLevel")
+        {
+            GetComponentInParent<LevelCompleteUI>().levelMoneyReward = WaveSpawnerInfinity.MoneyReward;
+        }
 
         while (money < GetComponentInParent<LevelCompleteUI>().levelMoneyReward)
         {

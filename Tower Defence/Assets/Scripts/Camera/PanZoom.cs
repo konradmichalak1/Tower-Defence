@@ -14,7 +14,15 @@ public class PanZoom : MonoBehaviour {
     
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetMouseButtonDown(0)){
+
+        if (GameManager.GameIsOver)
+        {
+            this.enabled = false;
+            return;
+        }
+
+
+        if (Input.GetMouseButtonDown(0)){
             touchStart = camera.ScreenToWorldPoint(Input.mousePosition);
         }
         if(Input.touchCount == 2){
@@ -29,7 +37,7 @@ public class PanZoom : MonoBehaviour {
 
             float difference = currentMagnitude - prevMagnitude;
 
-            zoom(difference * 0.01f);
+            zoom(difference * 0.1f);
         }else if(Input.GetMouseButton(0)){
             Vector3 direction = touchStart - camera.ScreenToWorldPoint(Input.mousePosition);
             camera.transform.position += direction;

@@ -1,55 +1,68 @@
-﻿using UnityEngine;
-/// <summary>
-/// Main Camera object script
-/// </summary>
-public class CameraController : MonoBehaviour {
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-    /// <summary>
-    /// Camera speed
-    /// </summary>
-    public float panSpeed = 30f;
-
-    public float scrollSpeed = 5f;
+public class CameraController : MonoBehaviour
+{
+    private Vector3 touchStart;
+    public Camera cam;
     public float minY = 10f;
     public float maxY = 80f;
-    /// <summary>
-    /// Offset that enables to change camera with mouse
-    /// </summary>
-    public float panBorderThickness = 10f;
-	void Update () {
-
-        //If game is over, camera stops working.
+    public float scrollSpeed = 5f;
+    // Update is called once per frame
+    void Update()
+    {
         if (GameManager.GameIsOver)
         {
             this.enabled = false;
             return;
         }
 
-        if(Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
+        if (Input.GetMouseButtonDown(0))
         {
-            transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+            touchStart = GetWorldPosition(0);
         }
-
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
+        if (Input.GetMouseButton(0))
         {
-            transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
-        }
-
-        if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
-        {
-            transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
-        }
-
-        if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
-        {
-            transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
+            Vector3 direction = touchStart - GetWorldPosition(0);
+            cam.transform.position += direction;
         }
 
         //Zooming
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (Input.touchCount == 2)
+        {
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
+
+            float difference = currentMagnitude - prevMagnitude;
+
+            zoom(difference);
+
+        }
+
+        zoom(Input.GetAxis("Mouse ScrollWheel"));
+    }
+    private Vector3 GetWorldPosition(float z)
+    {
+        Ray mousePos = cam.ScreenPointToRay(Input.mousePosition);
+        Plane ground = new Plane(Vector3.up, new Vector3(0, 0, 0));
+        float distance;
+        ground.Raycast(mousePos, out distance);
+        return mousePos.GetPoint(distance);
+    }
+
+    void zoom(float increment)
+    {
         Vector3 pos = transform.position;
-        pos.y -= scroll * scrollSpeed * Time.deltaTime * 1000;
+        pos.y -= increment * scrollSpeed * Time.deltaTime * 1000;
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
-        transform.position = pos;
+        cam.transform.position = pos;
+
     }
 }

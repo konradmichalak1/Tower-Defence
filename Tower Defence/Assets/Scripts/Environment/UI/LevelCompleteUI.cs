@@ -39,6 +39,7 @@ public class LevelCompleteUI : MonoBehaviour {
 
         //Add money to player global amount
         PlayerPrefs.SetInt("Money", PlayerPrefs.GetInt("Money", 0) + levelMoneyReward);
+
     }
 
     private void MoveToScene(string sceneName)

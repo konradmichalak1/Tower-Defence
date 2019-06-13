@@ -10,13 +10,14 @@ public class BulletController : MonoBehaviour {
     /// <summary> Bullet impact effect </summary>
     public GameObject impactEffect;
 
+    public GameObject mAudioSrc;
 
     public int damage = 50;
     public float speed = 70f;
 
     /// <summary> Bullet explosion range (Area of effect - AOE) </summary>
     public float explosionRadius = 0f;
-
+    
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class BulletController : MonoBehaviour {
         damage = BulletsStats.GetBulletDamage(bulletName);
         speed = BulletsStats.GetBulletSpeed(bulletName);
         explosionRadius = BulletsStats.GetBulletExplosionRadius(bulletName);
+    
     }
 
     public void ChaseEnemy(Transform _target)
@@ -33,20 +35,28 @@ public class BulletController : MonoBehaviour {
 
     private void HitTarget()
     {
+        
         GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-
+       
+        
         Destroy(effectIns, 2f); //destroy effect instance after selected time
-
+      
         if(explosionRadius > 0f)
         {
+            GameObject audioIns = Instantiate(mAudioSrc);
+
+            audioIns.GetComponent<AudioSource>().Play();
+            Destroy(audioIns, 4f);
+
             Explode();
         }
         else
         {
             Damage(target);
         }
-
+ 
         Destroy(gameObject);
+
     }
 
     /// <summary> Harms only one found target </summary>
@@ -66,6 +76,11 @@ public class BulletController : MonoBehaviour {
     private void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        
+        //GameObject audioIns = mAudioSrc;
+        
+        //Destroy(audioIns, 4f); //destroy effect instance after selected time
+
         foreach(Collider collider in colliders)
         {
             if(collider.tag == "Enemy")
@@ -80,13 +95,15 @@ public class BulletController : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
+        
 
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
-
+        
         if(dir.magnitude <= distanceThisFrame)
         {
             HitTarget();
+            
             return;
         }
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);

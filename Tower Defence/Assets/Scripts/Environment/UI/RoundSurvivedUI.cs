@@ -16,6 +16,7 @@ public class RoundSurvivedUI : MonoBehaviour {
     {
         StartCoroutine(AnimateRoundsText());
         StartCoroutine(AnimateMoneyText());
+
     }
 
     IEnumerator AnimateRoundsText()
@@ -38,7 +39,7 @@ public class RoundSurvivedUI : MonoBehaviour {
     {
         moneyText.text = "0";
         int money = 0;
-        yield return new WaitForSeconds(.003f);
+        yield return new WaitForSeconds(.0001f);
 
         if (SceneManager.GetActiveScene().name == "InfinityLevel")
         {
@@ -50,7 +51,9 @@ public class RoundSurvivedUI : MonoBehaviour {
             money++;
             moneyText.text = money.ToString();
 
-            yield return new WaitForSeconds(.01f);
+            yield return new WaitForSeconds(.001f);
         }
+
+        WaveSpawnerInfinity.MoneyReward = 0;
     }
 }

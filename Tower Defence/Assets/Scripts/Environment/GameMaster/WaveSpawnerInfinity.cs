@@ -87,16 +87,16 @@ public class WaveSpawnerInfinity : MonoBehaviour {
         Wave wave = new Wave();
 
         EnemySimple.GetComponent<EnemyController>().startHealth =
-            EnemySimple.GetComponent<EnemyController>().startHealth + (3*waveIndex * EnemySimple.GetComponent<EnemyController>().startHealth / 100);
+            EnemySimple.GetComponent<EnemyController>().startHealth + (5*waveIndex * EnemySimple.GetComponent<EnemyController>().startHealth / 100);
 
         EnemyFast.GetComponent<EnemyController>().startHealth =
-            EnemyFast.GetComponent<EnemyController>().startHealth + (3*waveIndex * EnemyFast.GetComponent<EnemyController>().startHealth / 100);
+            EnemyFast.GetComponent<EnemyController>().startHealth + (5*waveIndex * EnemyFast.GetComponent<EnemyController>().startHealth / 100);
 
         EnemyTough.GetComponent<EnemyController>().startHealth =
-            EnemyTough.GetComponent<EnemyController>().startHealth + (3*waveIndex * EnemyTough.GetComponent<EnemyController>().startHealth / 100);
+            EnemyTough.GetComponent<EnemyController>().startHealth + (5*waveIndex * EnemyTough.GetComponent<EnemyController>().startHealth / 100);
 
         EnemyBoss.GetComponent<EnemyController>().startHealth =
-            EnemyBoss.GetComponent<EnemyController>().startHealth + (3*waveIndex * EnemyBoss.GetComponent<EnemyController>().startHealth / 100);
+            EnemyBoss.GetComponent<EnemyController>().startHealth + (5*waveIndex * EnemyBoss.GetComponent<EnemyController>().startHealth / 100);
 
         List<EnemyInWave> enemies = new List<EnemyInWave>();
 

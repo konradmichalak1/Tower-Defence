@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour {
     public GameObject ui;
     public string manuSceneName = "MainMenu";
     public SceneFader sceneFader;
+    public GameObject completeLevelUI;
 
     private void Update()
     {
@@ -46,4 +47,17 @@ public class PauseMenu : MonoBehaviour {
         Toggle();
         sceneFader.FadeTo(manuSceneName);
     }
+
+
+    public void EndLevel()
+    {
+        if (SceneManager.GetActiveScene().name == "InfinityLevel")
+        {
+            Toggle();
+            GameManager.GameIsOver = true;
+            completeLevelUI.SetActive(true);
+            return;
+        }
+    }
+
 }

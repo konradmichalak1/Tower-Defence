@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
         }
 
         //Zooming
-        if (Input.touchCount == 2)
+       /*  if (Input.touchCount == 2)
         {
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -46,7 +46,7 @@ public class CameraController : MonoBehaviour
 
         }
 
-        zoom(Input.GetAxis("Mouse ScrollWheel"));
+        zoom(Input.GetAxis("Mouse ScrollWheel"));*/
     }
     private Vector3 GetWorldPosition(float z)
     {
@@ -57,7 +57,7 @@ public class CameraController : MonoBehaviour
         return mousePos.GetPoint(distance);
     }
 
-    void zoom(float increment)
+     void zoom(float increment)
     {
         Vector3 pos = transform.position;
         pos.y -= increment * scrollSpeed * Time.deltaTime * 1000;

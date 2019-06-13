@@ -275,7 +275,7 @@ MonoBehaviour:
   isAlive: 0
   startSpeed: 6
   speed: 10
-  startHealth: 400
+  startHealth: 500
   moneyGain: 50
   deathEffect: {fileID: 1569451010829848, guid: 058901203c9a5d74b9067237fa95997f,
     type: 3}

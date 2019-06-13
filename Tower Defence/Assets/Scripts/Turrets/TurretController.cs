@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /// <summary>
 /// All Turrets.prefab script.
 /// </summary>
@@ -19,6 +20,11 @@ public class TurretController : MonoBehaviour {
     public string turretName;
 
     public float range = 15f;
+
+    public AudioSource mAudioSrc;
+    public AudioSource mAudioSrc2;
+    public bool audioFlag = false;
+    public int audioType; //1-StandardTurret , 2 -MissileLauncher , 3- LaserBeam
 
     /// <summary>Turret rotate speed. </summary>
     public float turnSpeed = 10f;
@@ -50,14 +56,14 @@ public class TurretController : MonoBehaviour {
     public Transform firePoint;
 
 	void Start () {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f); //Starts UpdateTarget() fuction every specified time
+        InvokeRepeating("UpdateTarget", 0f, 0.2f); //Starts UpdateTarget() fuction every specified time
 
         //Set turret stats from global stats
         range = TurretsStats.GetTurretRange(turretName);
         fireRate = TurretsStats.GetTurretFireRate(turretName);
         damageOverTime = TurretsStats.GetTurretDamageOverTime(turretName);
         slowPercentage = TurretsStats.GetTurretSlowPercentage(turretName);
-
+        //mAudioSrc=GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -99,6 +105,9 @@ public class TurretController : MonoBehaviour {
                 impactEffect.Stop();
                 lineRenderer.enabled = false;
                 impactLight.enabled = false;
+                audioFlag=false;
+                mAudioSrc2.Play();
+                mAudioSrc2.Pause();
             }
             return;
         }
@@ -140,9 +149,17 @@ public class TurretController : MonoBehaviour {
     /// </summary>
     private void Shoot()
     {
+       
         GameObject _bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         BulletController bullet = _bullet.GetComponent<BulletController>();
-
+        if(audioType==1){
+            int ran = Random.Range(0,2);
+            if(ran==0)mAudioSrc.Play();
+            else mAudioSrc2.Play();
+        }
+        if(audioType==2){
+            mAudioSrc.Play();
+        }
         if(bullet != null)
         {
             bullet.ChaseEnemy(target);
@@ -158,6 +175,11 @@ public class TurretController : MonoBehaviour {
         if (!targetEnemy.isAlive)
             return;
 
+    if(audioFlag==false){
+        mAudioSrc.Play();
+        mAudioSrc2.Play();
+        audioFlag=true;
+    }
         //Damaging
         targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
 

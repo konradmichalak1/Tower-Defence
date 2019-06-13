@@ -273,10 +273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
-  startSpeed: 4
+  startSpeed: 6
   speed: 10
-  startHealth: 2000
-  moneyGain: 500
+  startHealth: 2200
+  moneyGain: 300
   deathEffect: {fileID: 1569451010829848, guid: 058901203c9a5d74b9067237fa95997f,
     type: 3}
   healthBar: {fileID: 114909981388069068}
